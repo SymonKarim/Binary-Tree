@@ -11,6 +11,29 @@
  */
 class Solution {
 public:
+  vector<vector<int>> levelOrderBottomFaster(TreeNode* root) {
+         queue<TreeNode*>q;
+         vector<vector<int>> ans;
+         if(root == NULL) return ans;
+         vector<int>v;
+       
+        q.push(root);
+      
+        while(!q.empty()){
+         int size = q.size();
+         while(size--){
+             TreeNode* temp = q.front();q.pop();
+             v.push_back(temp->val);
+
+             if(temp->left) q.push(temp->left);
+             if(temp->right) q.push(temp->right);
+         }
+         ans.push_back(v);
+         v.clear();
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
     vector<vector<int>> levelOrderBottom(TreeNode* root) {
          queue<TreeNode*>q;
          vector<vector<int>> ans;
