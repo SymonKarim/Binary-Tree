@@ -2,6 +2,7 @@ vector<int> leftView(Node *root)
 {
    // Your code here 
    vector<int>ans;
+if(!root) return ans;
        queue<Node*>Q;
        Q.push(root);
        while(!Q.empty()){
